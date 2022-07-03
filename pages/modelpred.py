@@ -15,13 +15,15 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import KFold 
 from sklearn.model_selection import cross_val_score 
 from sklearn.model_selection import cross_val_predict 
-
+from components.markdown.markformat import markformat
 
 register_page(__name__, path="/model")
 
 from components.sampledf.model_data import df_comunas,df_ibague
 
+file1 = open('./data/mdsamples/story10.md')
 
+texto1  = markformat('', file1.read())
 
 df = df_ibague
 
@@ -286,8 +288,8 @@ def prepare_random_forest_data(af, dn,rd,bb,i,h,a,pl,e,ep,oo,
 
 layout = html.Div([
     
-            html.Header( 
-                html.H1("Cual es el estado de mi Arbol?")
+            html.Header(
+                html.H1("¿Cual es el estado de mi Árbol?")
                 )
             ,
 
@@ -296,11 +298,21 @@ layout = html.Div([
             
                 html.Div(id='my-output')
 
-            ],className="esta2")
+            ],className="esta2"),
+
+            dbc.Button("¿Como funciona?", id="open-fs"),
+                    dbc.Modal(
+                        [
+                            dbc.ModalHeader(dbc.ModalTitle("Modo de uso")),
+                            dbc.ModalBody(texto1.show()),
+                        ],
+                        id="modal-fs",
+                        fullscreen=True
+                    )
             ,
             html.Div([
                 
-                html.H3("Seleccione las caracteristicas de su Arbol")
+                html.H3("Seleccione las caracteristicas de su Árbol")
 
             ],className="descripcion2")
 
@@ -309,11 +321,11 @@ layout = html.Div([
                 
                     html.Div([
                         
-                        dbc.Label(["Caracteristicas fisicas:"],className="c1"),
+                        dbc.Label(["Características físicas:"],className="c1"),
                         dbc.Input(placeholder="Altura Fuste",className="c2",name="af",id="af"),
-                        dbc.Input(placeholder="Diametro Normal",className="c3",name="dn",id="dn"),
-                        dbc.Checklist(options=[{'label':'Raices Descubiertas','value':'Raices Descubiertas'}],className="c4",name="rd",id="rd"),
-                        dbc.Checklist(options=[{'label':'Bifurcacion Basal','value':'Bifurcacion Basal'}],className="c5",name="bb",id="bb")
+                        dbc.Input(placeholder="Diámetro Normal",className="c3",name="dn",id="dn"),
+                        dbc.Checklist(options=[{'label':'Raíces Descubiertas','value':'Raices Descubiertas'}],className="c4",name="rd",id="rd"),
+                        dbc.Checklist(options=[{'label':'Bifurcación Basal','value':'Bifurcacion Basal'}],className="c5",name="bb",id="bb")
                     
 
                     ],className="caracteristicas")
@@ -324,10 +336,10 @@ layout = html.Div([
                         dbc.Checklist(options=[{'label':'Insectos','value':'Insectos'}],className="p2",name="i",id="i"),
                         dbc.Checklist(options=[{'label':'Hongos','value':'Hongos'}],className="p3",name="h",id="h"),
                         dbc.Checklist(options=[{'label':'Agallas','value':'Agallas'}],className="p4",name="a",id="a"),
-                        dbc.Checklist(options=[{'label':'Pudricion Localizada','value':'Pudricion Localizada'}],className="p5",name="pl",id="pl"),
+                        dbc.Checklist(options=[{'label':'Pudrición Localizada','value':'Pudricion Localizada'}],className="p5",name="pl",id="pl"),
                         dbc.Checklist(options=[{'label':'Epifitas','value':'Epifitas'}],className="p6",name="e" ,id="e"),
                         dbc.Checklist(options=[{'label':'Especies Parasitas','value':'Especies Parasitas'}],className="p7",name="ep",id="ep"),
-                        dbc.Checklist(options=[{'label':'Otros Objetos"','value':'Otros Objetos"'}],className="p8",name="oo",id="oo"),
+                        dbc.Checklist(options=[{'label':'Otros Objetos','value':'Otros Objetos'}],className="p8",name="oo",id="oo"),
                     
 
                     ],className="presencias")
@@ -335,13 +347,13 @@ layout = html.Div([
                     ,html.Div([
                 
                         dbc.Label(["Conflictos:"],className="con1"),
-                        dbc.Checklist(options=[{'label':'Redes Electricas','value':'Redes Electricas'}],className="con2",name="re",id="re"),
-                        dbc.Checklist(options=[{'label':'Redes Hidraulicas','value':'Redes Hidraulicas'}],className="con3",name="rh",id="rh"),
+                        dbc.Checklist(options=[{'label':'Redes Eléctricas','value':'Redes Eléctricas'}],className="con2",name="re",id="re"),
+                        dbc.Checklist(options=[{'label':'Redes Hidráulicas','value':'Redes Hidráulicas'}],className="con3",name="rh",id="rh"),
                         dbc.Checklist(options=[{'label':'Redes Alcantarillado','value':'Redes Alcantarillado'}],className="con4",name="ra",id="ra"),
-                        dbc.Checklist(options=[{'label':'Otros Arboles','value':'Otros Arboles'}],className="con5",name="oa",id="oa"),
+                        dbc.Checklist(options=[{'label':'Otros Árboles','value':'Otros Arboles'}],className="con5",name="oa",id="oa"),
                         dbc.Checklist(options=[{'label':'Estructuras','value':'Estructuras'}],className="con6",name="est",id="est"),
                         dbc.Checklist(options=[{'label':'Infraestructura Vial','value':'Infraestructura Vial'}],className="con7",name="iv",id="iv"),
-                        dbc.Checklist(options=[{'label':'Redes telefonicas','value':'Redes telefonicas'}],className="con8",name="rt",id="rt"),
+                        dbc.Checklist(options=[{'label':'Redes telefónicas','value':'Redes telefónicas'}],className="con8",name="rt",id="rt"),
                         dbc.Checklist(options=[{'label':'Redes Gas','value':'Redes Gas'}],className="con9",name="rg",id="rg"),
                         dbc.Checklist(options=[{'label':'Alumbrado Publico','value':'Alumbrado Publico'}],className="con10",name="ap",id="ap"),
 
@@ -350,8 +362,8 @@ layout = html.Div([
                 
                         dbc.Label("Riesgos:",className="r1"),
                         dbc.Checklist(options=[{'label':'Volcamiento','value':'Volcamiento'}],className="r2",name="v",id="v"),
-                        dbc.Checklist(options=[{'label':"Caida Ramas",'value':'Caida Ramas'}],className="r3",name="cr",id="cr"),
-                        dbc.Checklist(options=[{'label':"Caida Elementos",'value':'Caida Elementos'}],className="r4",name="ce",id="ce"),
+                        dbc.Checklist(options=[{'label':"Caída Ramas",'value':'Caída Ramas'}],className="r3",name="cr",id="cr"),
+                        dbc.Checklist(options=[{'label':"Caída Elementos",'value':'Caída Elementos'}],className="r4",name="ce",id="ce"),
 
                     ],className="riesgos")
 
@@ -359,7 +371,8 @@ layout = html.Div([
 
                             html.Div([
                                 
-                                html.Label(children=['Nombre comun: ']),
+                                html.Label(children=['Nombre común: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='ncomun',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['nom_comun'].unique())],
                                 value=[b for b in sorted(df['nom_comun'].unique())], multi = False
@@ -369,6 +382,7 @@ layout = html.Div([
                             
                             ,html.Div([
                                 html.Label(children=['Densidad Follaje: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='densidad',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['densidad_follaje'].unique())],
                                 value=[b for b in sorted(df['densidad_follaje'].unique())], multi = False
@@ -379,6 +393,7 @@ layout = html.Div([
                             ,html.Div([
 
                                 html.Label(children=['Comuna: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='comuna',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['comuna'].unique())],
                                 value=[b for b in sorted(df['comuna'].unique())], multi = False
@@ -389,6 +404,7 @@ layout = html.Div([
                             ,html.Div([
 
                                 html.Label(children=['Emplazamiento: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='emplazamiento',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['emplazamiento'].unique())],
                                 value=[b for b in sorted(df['emplazamiento'].unique())], multi = False
@@ -397,7 +413,8 @@ layout = html.Div([
 
                             ,html.Div([
 
-                                html.Label(children=['Estado Fisico: ']),
+                                html.Label(children=['Estado Físico: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='estadof',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['estado_fisico'].unique())],
                                 value=[b for b in sorted(df['estado_fisico'].unique())], multi = False
@@ -406,6 +423,7 @@ layout = html.Div([
                             ,html.Div([
 
                                 html.Label(children=['Habito Crecimiento: ']),
+                                html.Hr(),
                                 dcc.Dropdown(id='habito',
                                 options=[{'label':str(b),'value':b} for b in sorted(df['habito_crecimiento'].unique())],
                                 value=[b for b in sorted(df['habito_crecimiento'].unique())], multi = False
@@ -472,18 +490,28 @@ def update_output_div(af,dn,rd,bb,i,h,a,pl,e,ep,oo,re,rh,ra,oa,est,iv,rt,rg,ap,v
         prepared_data=prepare_random_forest_data(af, dn,rd,bb,i,h,a,pl,e,ep,oo,
                                 re,rh,ra,oa,est,iv,rt,rg,ap,v,cr,ce,
                                ncomun,densidad,comuna,emplazamiento,estadof,habito)
-        print(prepared_data.shape[1])
+        #print(prepared_data.shape[1])
         if prepared_data.shape[1]==133:
 
             loaded_model = load_random_forest_model()
         
             prediction = loaded_model.predict(prepared_data)
 
-            salida= f'Su arbol esta: {prediction[0]}'
+            salida= f'Su árbol esta: \n{prediction[0]}'
         else:
-            salida = "Falto seleccionar alguna opcion, intenta de nuevo!"
+            salida = "Falto seleccionar alguna opción, intenta de nuevo!"
     elif str(boton)=="":
         salida=""
     else:
         salida=""
     return  salida
+
+@callback(
+    Output("modal-fs", "is_open"),
+    Input("open-fs", "n_clicks"),
+    State("modal-fs", "is_open"),
+)
+def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open

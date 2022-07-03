@@ -29,7 +29,7 @@ layout = html.Div([
                     html.Img(src='/assets/leo.png', height="100px", width="100px",className="center foto"),
                     html.Br(),
                     html.H3("Leonardo Pérez"),
-                    html.H3("Ing. Electromecanico")
+                    html.H3("Ing. Electromecánico")
 
                 ],className="foto2"),
 

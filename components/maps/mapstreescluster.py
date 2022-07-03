@@ -29,33 +29,21 @@ class map_trees_cluster:
 
         df=self.df
 
-        df["lat"]=df["latitude"]
-        df["lon"]=df["longitude"]
-
-        df1=df[df["comuna"]==1]
-        comuna1 = [dl.Circle(center=[row["lat"], row["lon"]],radius=2) for i, row in df1.iterrows()]
-
-        df1=df[df["comuna"]==5]
-        comuna5 = [dl.Circle(center=[row["lat"], row["lon"]],radius=2) for i, row in df1.iterrows()]
         
         m=[]
         for i in range(len(df)):
             m.append(dict(lat=df["latitude"].iloc[i], lon=df["longitude"].iloc[i]))
 
 
-        keys = ["watercolor", "toner", "terrain"]
-        url_template = "http://{{s}}.tile.stamen.com/{}/{{z}}/{{x}}/{{y}}.png"
-        attribution = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' \
-              '<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data ' \
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
 
         layout = dl.Map([
-            dl.TileLayer(),
+            dl.TileLayer(url=url),
             # From in-memory geojson. All markers at same point forces spiderfy at any zoom level.
-            dl.GeoJSON(data=dlx.dicts_to_geojson(m), cluster=True, zoomToBoundsOnClick=True,superClusterOptions={"radius": 60})
+            dl.GeoJSON(data=dlx.dicts_to_geojson(m), cluster=True, zoomToBoundsOnClick=True,superClusterOptions={"radius": 30})
             # From hosted asset (best performance).
    
-            ], center=(4.430081,-75.2112492), zoom=13, style={'height': '600px'})
+            ], center=(4.430081,-75.2112492), zoom=6,style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"})
  
 
         return layout

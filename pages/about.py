@@ -20,7 +20,7 @@ layout = html.Div([
                 
                 texto1.show()
                 ,dbc.NavLink(
-                    (html.H6("Enlace")),href="https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Censo-de-Arbolado-urbano-en-Ibagu-Sria-Ambiente-y-/am4p-tz7w",target="_blank")
+                    (html.H6("Enlace: Datos Públicos de Ibagué")),href="https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Censo-de-Arbolado-urbano-en-Ibagu-Sria-Ambiente-y-/am4p-tz7w",target="_blank")
 
             ],className="descripcion")
                 ,

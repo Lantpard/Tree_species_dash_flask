@@ -8,7 +8,6 @@ import plotly.express as px
 from components.maps.mapstrees import map_trees
 from components.sampledf.model_data import df_comunas,df_ibague
 
-
 mapa_trees = map_trees('Mapa Arboles Ibague', 'div_map_trees', df_ibague, df_comunas)
 
 
@@ -25,6 +24,7 @@ df = df_ibague
 df['color']=df.apply(lambda x: 'red' if x["estado_sanitario"]=="Muerto" else ('orange' if x["estado_sanitario"]=="Critico" else ('yellow' if x["estado_sanitario"]=="Enfermo" else ('green'))), axis=1)
 
 blackbold={'color':'black', 'font-weight': 'bold'}
+
 
 layout = dbc.Container([
 #---------------------------------------------------------------
@@ -44,10 +44,11 @@ layout = dbc.Container([
 
                 html.Div([
 
-            html.H3("Filtros"),
+            html.Hr()
+            ,
 
 # Recycling_type_checklist
-            html.H3('Seleccione Estado Sanitario: '),
+            html.H3('Estado Sanitario:'),
             dcc.Dropdown(id='status_type',
                     options=[{'label':str(b),'value':b} for b in sorted(df['estado_sanitario'].unique())],
                     value=[b for b in sorted(df['estado_sanitario'].unique())], multi = True
@@ -73,7 +74,7 @@ layout = dbc.Container([
             
 
             # Borough_checklist
-            html.H3('Seleccione Comuna: '),
+            html.H3('Comuna:'),
             dcc.Dropdown(id='comuna_name',
                     options=[{'label':str(b),'value':b} for b in sorted(df['comuna'].unique())],
                     value=[b for b in sorted(df['comuna'].unique())], multi = True
@@ -88,9 +89,11 @@ layout = dbc.Container([
         html.Div([
             dcc.Graph(id='graph',className="mapview"
             )
-        ], className='nine columns')
+        ], className='mapgeneral')
 
             ],lg=9)
+            ,
+            dbc.Col([])
         ])
         ])
 
@@ -124,7 +127,7 @@ def update_figure(chosen_comuna,chosen_status):
     return {
         'data': locations,
         'layout': go.Layout(
-            uirevision= 'foo', #preserves state of figure/map after callback activated
+            uirevision= 'foo', 
             clickmode= 'event+select',
             hovermode='closest',
             hoverdistance=2,
@@ -138,7 +141,7 @@ def update_figure(chosen_comuna,chosen_status):
                     lon=-75.2112492
                 ),
                 pitch=40,
-                zoom=12
+                zoom=11
             ),
         )
     }

@@ -38,8 +38,8 @@ body {
     margin: 10px auto;
     display:grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(8,1fr);
-    grid-template-rows: repeat(4,auto);
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,auto);
 
 }
 
@@ -53,20 +53,39 @@ body {
     justify-content: center;
 }
 
+
+
 .descripcion2 {
-    grid-column: 1/5;
+    grid-column: 1/2;
     grid-row: 2;
     margin: 10px;
 }
 
+.modal{
+    grid-column: 2/3;
+    grid-row: 2;
+}
+
+
+.esta2{
+    grid-column: 3/4;
+    grid-row: 2;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    color: white; 
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 .formulario2 {
-    grid-column: 1/9;
-    grid-row: 3/5;
+    grid-column: 1/4;
+    grid-row: 3;
 }
 
 .formulario2 {
     display:grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,auto);
 }    
 
@@ -75,7 +94,7 @@ body {
 }
 
 .caracteristicas {
-   background-color: rgb(47, 186, 186);
+   background-color: #187498;
    border-radius: 20px;
    display:grid;
    grid-row: 1/2;
@@ -111,7 +130,7 @@ body {
 }
 
 .presencias {
-    background-color: rgb(94, 177, 61);
+    background-color: #187498;
     border-radius: 20px;
     display:grid;
     grid-row: 2/3;
@@ -157,11 +176,11 @@ body {
 
 
 .conflictos {
-    background-color: rgb(139, 47, 141);
+    background-color:#36AE7C;
     border-radius: 20px;
     display:grid;
     grid-row: 1/2;
-    grid-column: 3/4;
+    grid-column: 2/3;
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(10,auto);
     padding: 10px;
@@ -204,11 +223,11 @@ body {
 
 
 .riesgos {
-    background-color: rgb(186, 20, 48);
+    background-color: #36AE7C;
     border-radius: 20px;
     display:grid;
     grid-row: 2/3;
-    grid-column: 3/4;
+    grid-column: 2/3;
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(4,auto);
     padding: 10px;
@@ -234,11 +253,11 @@ body {
 
 
 .selectores {
-    background-color: rgb(61, 114, 94);
+    background-color: #187498;
     border-radius: 20px;
     display:grid;
     grid-row: 1/4;
-    grid-column: 5/6;
+    grid-column: 3/4;
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(6,auto);
     padding: 10px;
@@ -269,6 +288,8 @@ body {
 .habito_crecimiento {
     grid-row: 6;
 }
+
+
 
 .button1 {
     grid-row: 3/4;
@@ -505,6 +526,7 @@ h3{
     grid-column: 1/4;
     grid-row: 2/4;
     margin: 10px;
+    color: white;
 }
 
 .descripcion > div{
@@ -559,7 +581,8 @@ h3{
 
 .info {
     display:grid;
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: repeat(2,auto);
+    grid-template-columns: repeat(4,auto);
     background-color: black !important;
 }    
 
@@ -569,44 +592,48 @@ h3{
 
 .formulario {
     display:grid;
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: repeat(5,auto);
 }    
 
 .formulario > div{
     padding: 1em;
 }
 
-.facebook {
-    grid-row: 1;
+.redes {
+    grid-column: 1/5;
+    grid-row: 1/2;
     align-self: center;
+}
 
-    align-items: center;
-    justify-content: center;
+.facebook {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    align-self: top;
+    text-align: center;
 
 }
 
-.facebook .link{
-
-    display: inline-block;
-    
-}
 
 .twitter {
-    grid-row: 2;
-    align-self: center;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: top;
     text-align: center;
 }
 
 .instagram {
-    grid-row: 3;
-    align-self: center;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    align-self: top;
     text-align: center;
 }
 
 .web {
-    grid-row: 4;
-    align-self: center;
+    grid-column: 4/5;
+    grid-row: 2/3;
+    align-self: top;
     text-align: center;
+
 }
 
 .correo {
@@ -639,29 +666,22 @@ h3{
 }
 
 .cardmap{
-    background-color: rgba(72, 173, 113, 0.707);
+    background-color: #187498;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
-    color: white;
+    color: black;
 
 }
 
 .mapview{
-    background-color: red;
+    
     margin: 0px;
     padding: 0px;
+    height: 600px;
 }
 
-.esta2{
-    grid-column: 6/8;
-    grid-row: 2;
-    border-radius: 10px;
-    margin: 5px;
-    padding: 5px;
-    color: white; 
-    font-size: 1.5em;
-    font-weight: bold;
-    
+.maptext{
+    color: black;
 }
 
